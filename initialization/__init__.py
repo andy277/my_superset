@@ -1,7 +1,7 @@
 from typing import Any, TYPE_CHECKING
 
 from deprecation import deprecated
-from extensions import _event_logger
+from extensions import appbuilder
 
 
 if TYPE_CHECKING:
@@ -29,8 +29,3 @@ class SupersetAppInitializer:
         #
         appbuilder.add_api(DatasourceRestApi)
 
-
-    def setup_event_logger(self) -> None:
-        _event_logger["event_logger"] = get_event_logger_from_cfg_value(
-            self.superset_app.config.get("EVENT_LOGGER", DBEventLogger())
-        )

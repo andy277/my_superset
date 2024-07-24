@@ -1,7 +1,7 @@
 import logging
 from flask_appbuilder.api import expose, protect, safe
 from views.base_api import BaseSupersetApi, statsd_metrics
-import event_logger
+from superset_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 
@@ -19,11 +19,6 @@ class DatasourceRestApi(BaseSupersetApi):
     @protect()
     @safe
     @statsd_metrics
-    @event_logger.log_this_with_context(
-        action=lambda self, *args, **kwargs: f"{self.__class__.__name__}"
-                                             f".get_column_values",
-        log_to_statsd=False,
-    )
     def get_column_values(
         self, datasource_type: str, datasource_id: int, column_name: str
     ) -> FlaskResponse:
