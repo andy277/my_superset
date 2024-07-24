@@ -13,13 +13,11 @@ class DatasourceRestApi(BaseSupersetApi):
     openapi_spec_tag = "Datasources"
 
     @expose(
-            "/<datasource_type>/<int:datasource_id>/column/<column_name>/values/",
+            "/api/superset",
             methods=("GET",),
         )
     @protect()
     @safe
     @statsd_metrics
-    def get_column_values(
-        self, datasource_type: str, datasource_id: int, column_name: str
-    ) -> FlaskResponse:
-        return self.response(200, result="Hello world")
+    def get_column_values(self) -> FlaskResponse:
+        return self.response(200, result="Hello from Superset")

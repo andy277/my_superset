@@ -7,6 +7,8 @@ from initialization import SupersetAppInitializer
 
 
 logger = logging.getLogger(__name__)
+
+
 def create_app(superset_config_module: Optional[str] = None) -> Flask:
     app = SupersetApp(__name__)
 
@@ -18,6 +20,7 @@ def create_app(superset_config_module: Optional[str] = None) -> Flask:
         app_initializer.init_app()
 
         return app
+
     except Exception as ex:
         logger.exception("Fail to create app")
         raise ex
