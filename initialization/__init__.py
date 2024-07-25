@@ -1,11 +1,12 @@
 from typing import Any, TYPE_CHECKING
 from flask import Flask
 
+
 from deprecation import deprecated
-from extensions import (appbuilder, APP_DIR)
+from ..extensions import (appbuilder, APP_DIR)
 
 if TYPE_CHECKING:
-    from app import SupersetApp
+    from ..app import SupersetApp
 
 
 class SupersetAppInitializer:
@@ -20,7 +21,6 @@ class SupersetAppInitializer:
     @property
     def flask_app(self) -> Flask:
         return self.superset_app
-
 
     def init_views(self) -> None:
         from datasource.api import DatasourceRestApi

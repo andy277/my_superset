@@ -3,8 +3,7 @@ from typing import Optional
 from flask import Flask
 import os
 
-from initialization import SupersetAppInitializer
-
+from .initialization import SupersetAppInitializer
 
 logger = logging.getLogger(__name__)
 
