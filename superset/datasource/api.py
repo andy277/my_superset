@@ -10,14 +10,13 @@ logger = logging.getLogger(__name__)
 class DatasourceRestApi(BaseApi):
     # route_base = "/api"
     # allow_browser_login = True
-    # class_permission_name = "Datasource"
+    class_permission_name = "Datasource"
     resource_name = "datasource"
     # openapi_spec_tag = "Datasources"
 
-    @expose("/superset", methods=['GET'])
-    def get_column_values(self) -> Dict:
-        message = {"message": "Hello world"}
-        return message
+    @expose("/greetings", methods=["GET"])
+    def get_column_values(self) -> FlaskResponse:
+        return self.response(200, message="Hello world.")
     # @protect()
     # @safe
     # @statsd_metrics

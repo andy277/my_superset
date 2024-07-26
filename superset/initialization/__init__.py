@@ -34,4 +34,6 @@ class SupersetAppInitializer:
               order to fully init the app
         """
         self.init_views()
+        # for rule in self.superset_app.url_map.iter_rules():
+        #     print(rule)
 
