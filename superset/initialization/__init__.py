@@ -27,3 +27,11 @@ class SupersetAppInitializer:
         # Setup API views
         #
         appbuilder.add_api(DatasourceRestApi)
+
+    def init_app(self) -> None:
+        """
+              Main entry point which will delegate to other methods in
+              order to fully init the app
+        """
+        self.init_views()
+
