@@ -20,7 +20,7 @@ class SupersetAppInitializer:
 
     @deprecated(details="use self.superset_app instead of self.flask_app")  # type: ignore
     @property
-    def flask_app(self) ->  Flask:
+    def flask_app(self) -> Flask:
         return self.superset_app
 
     def init_views(self) -> None:
@@ -30,7 +30,6 @@ class SupersetAppInitializer:
         # Setup API views
         #
         appbuilder.add_api(DatasourceRestApi)
-
 
     def init_app(self) -> None:
         """
