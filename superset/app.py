@@ -3,9 +3,12 @@ from typing import Optional
 from flask import Flask
 import os
 
-from superset.initialization import SupersetAppInitializer
+from .initialization import SupersetAppInitializer
 
 logger = logging.getLogger(__name__)
+
+class SupersetApp(Flask):
+    pass
 
 
 def create_app(superset_config_module: Optional[str] = None) -> Flask:
@@ -25,5 +28,3 @@ def create_app(superset_config_module: Optional[str] = None) -> Flask:
         raise ex
 
 
-class SupersetApp(Flask):
-    pass
