@@ -29,7 +29,10 @@ class SupersetAppInitializer:
         #
         # Setup API views
         #
-        appbuilder.add_api(DatasourceRestApi)
+        try:
+            appbuilder.add_api(DatasourceRestApi)
+        except Exception as e:
+            logger.warning(e)
 
     def init_app(self) -> None:
         """
