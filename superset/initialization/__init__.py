@@ -1,10 +1,13 @@
 from typing import Any
 from flask import Flask
+import logging
 from deprecation import deprecated
 from superset.extensions import appbuilder
 
 #if TYPE_CHECKING:
 # from superset.app import SupersetApp
+
+logger = logging.getLogger(__name__)
 
 
 class SupersetAppInitializer:
@@ -28,12 +31,19 @@ class SupersetAppInitializer:
         #
         appbuilder.add_api(DatasourceRestApi)
 
+
     def init_app(self) -> None:
         """
               Main entry point which will delegate to other methods in
               order to fully init the app
         """
         self.init_views()
-        # for rule in self.superset_app.url_map.iter_rules():
-        #     print(rule)
+        self.register_blueprints()
 
+    def register_blueprints(self) -> None:
+        for bp in self.config["BLUEPRINTS"]:
+            try:
+                logger.info("Registering blueprint: %s", bp.name)
+                self.superset_app.register_blueprint(bp)
+            except Exception:  # pylint: disable=broad-except
+                logger.exception("blueprint registration failed")
