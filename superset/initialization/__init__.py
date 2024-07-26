@@ -1,16 +1,14 @@
-from typing import Any, TYPE_CHECKING
-from flask import Flask
-
+from typing import Any
 
 from deprecation import deprecated
-from ..extensions import (appbuilder, APP_DIR)
+from superset.extensions import (appbuilder)
 
-if TYPE_CHECKING:
-    from ..app import SupersetApp
+#if TYPE_CHECKING:
+from superset.app import SupersetApp
 
 
 class SupersetAppInitializer:
-    def __init__(self, app: Flask) -> None:  # pylint: disable=too-many-public-methods
+    def __init__(self, app: SupersetApp) -> None:  # pylint: disable=too-many-public-methods
         super().__init__()
 
         self.superset_app = app
@@ -19,11 +17,11 @@ class SupersetAppInitializer:
 
     @deprecated(details="use self.superset_app instead of self.flask_app")  # type: ignore
     @property
-    def flask_app(self) -> Flask:
+    def flask_app(self) -> SupersetApp:
         return self.superset_app
 
     def init_views(self) -> None:
-        from datasource.api import DatasourceRestApi
+        from superset.datasource import DatasourceRestApi
 
         #
         # Setup API views

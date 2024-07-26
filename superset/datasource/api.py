@@ -1,7 +1,7 @@
 import logging
 from flask_appbuilder.api import expose, protect, safe
-from views.base_api import BaseSupersetApi, statsd_metrics
-from superset_typing import FlaskResponse
+from superset.views.base_api import BaseSupersetApi, statsd_metrics
+from superset.superset_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 
