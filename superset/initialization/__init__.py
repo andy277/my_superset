@@ -1,7 +1,7 @@
 from typing import Any
 from flask import Flask
 from deprecation import deprecated
-from superset.extensions import (appbuilder)
+from superset.extensions import appbuilder
 
 #if TYPE_CHECKING:
 # from superset.app import SupersetApp
