@@ -21,7 +21,7 @@ class SupersetAppInitializer:
         return self.superset_app
 
     def init_views(self) -> None:
-        from ..datasource.api import DatasourceRestApi
+        from superset.datasource.api import DatasourceRestApi
 
         #
         # Setup API views
