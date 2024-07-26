@@ -37,12 +37,4 @@ class SupersetAppInitializer:
               order to fully init the app
         """
         self.init_views()
-        self.register_blueprints()
 
-    def register_blueprints(self) -> None:
-        for bp in self.config["BLUEPRINTS"]:
-            try:
-                logger.info("Registering blueprint: %s", bp.name)
-                self.superset_app.register_blueprint(bp)
-            except Exception:  # pylint: disable=broad-except
-                logger.exception("blueprint registration failed")

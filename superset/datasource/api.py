@@ -8,16 +8,8 @@ logger = logging.getLogger(__name__)
 
 
 class DatasourceRestApi(BaseSupersetApi):
-    # route_base = "/api"
-    # allow_browser_login = True
-    # class_permission_name = "Datasource"
-    resource_name = "datasource"
-    # openapi_spec_tag = "Datasources"
+    route_base = "/datasource"
 
-    @protect()
-    @expose("/greetings", methods=["GET"])
-    @safe
-    @statsd_metrics
-    def get_column_values(self) -> FlaskResponse:
+    @expose("/greetings")
+    def greet(self) -> FlaskResponse:
         return self.response(200, message="Hello world.")
-
